@@ -257,12 +257,71 @@ function mostrarFrases() {
     siguiente();
 }
 
-// Botón final
+// ==================== BOTÓN FINAL + CONTADOR ====================
 document.getElementById("seguirHistoria").addEventListener("click", () => {
     volver.classList.add("fadeOut");
+
     setTimeout(() => {
         volver.style.display = "none";
-        capituloFinal.classList.remove("oculto");
-        capituloFinal.classList.add("fadeIn");
+        
+        // Ocultamos el capítulo final anterior
+        capituloFinal.classList.add("oculto");
+        
+        // Mostramos el nuevo contador
+        const contadorSeccion = document.getElementById("contadorSeccion");
+        contadorSeccion.classList.remove("oculto");
+        contadorSeccion.classList.add("fadeIn");
+        
+        // Actualizar contador inmediatamente
+        actualizarContador();
     }, 700);
+});
+
+// ==================== NUEVO CÓDIGO DEL CONTADOR ====================
+
+const contadorSeccion = document.getElementById("contadorSeccion");
+const botonVolverInicio = document.getElementById("volverInicio");
+
+// Función para actualizar el contador
+function actualizarContador() {
+    const fechaInicio = new Date("2026-02-02T22:11:00").getTime();
+    const ahora = new Date().getTime();
+    const diferencia = ahora - fechaInicio;
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+    document.getElementById("contador").innerHTML = 
+        `${dias} días<br>${horas} horas<br>${minutos} minutos<br>${segundos} segundos`;
+}
+
+// Actualizar cada segundo
+setInterval(actualizarContador, 1000);
+
+// Ir al contador desde el capítulo final
+document.getElementById("seguirHistoria").addEventListener("click", () => {
+    volver.classList.add("fadeOut");
+    
+    setTimeout(() => {
+        volver.style.display = "none";
+        capituloFinal.classList.add("oculto");   // Ocultamos el capítulo final
+        contadorSeccion.classList.remove("oculto");
+        contadorSeccion.classList.add("fadeIn");
+        actualizarContador(); // Primera actualización
+    }, 700);
+});
+
+// Botón para volver al inicio
+botonVolverInicio.addEventListener("click", () => {
+    contadorSeccion.classList.add("fadeOut");
+    
+    setTimeout(() => {
+        contadorSeccion.classList.add("oculto");
+        contadorSeccion.classList.remove("fadeOut");
+        // Volver a la primera pantalla
+        document.querySelector(".card").classList.remove("oculto");
+        document.querySelector(".card").classList.add("fadeIn");
+    }, 800);
 });
