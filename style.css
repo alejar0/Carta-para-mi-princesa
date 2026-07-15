@@ -676,3 +676,16 @@ opacity:1;
 .fadeOut {
     animation: desaparecer .8s forwards;
 }
+
+/* ==================== CONTADOR ==================== */
+#contadorSeccion h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+#contador {
+    font-size: 42px;
+    line-height: 1.4;
+    color: #ffb6d5;
+    text-shadow: 0 0 20px rgba(255, 182, 213, 0.6);
+}
