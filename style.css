@@ -1,216 +1,149 @@
+/* =========================
+   CONFIGURACIÓN GENERAL
+========================= */
+
 *{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
 
-height:100vh;
+    min-height:100vh;
 
-display:flex;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-justify-content:center;
+    padding:30px;
 
-align-items:center;
+    overflow-x:hidden;
 
-overflow:hidden;
+    font-family:'Poppins',sans-serif;
 
-font-family:'Poppins',sans-serif;
+    color:white;
 
-background:
-linear-gradient(180deg,#050816,#121b3a,#2d1856);
-
-}
-
-.card{
-
-width:800px;
-
-max-width:90%;
-
-padding:70px;
-
-text-align:center;
-
-background:rgba(255,255,255,.08);
-
-border:1px solid rgba(255,255,255,.15);
-
-backdrop-filter:blur(18px);
-
-border-radius:35px;
-
-box-shadow:0 30px 80px rgba(0,0,0,.45);
-
-animation:entrada 1.4s;
-
-z-index:2;
+    background:
+    linear-gradient(
+        180deg,
+        #050816,
+        #121b3a,
+        #2d1856
+    );
 
 }
 
-h1{
 
-font-size:55px;
+/* =========================
+        PARTÍCULAS
+========================= */
 
-color:white;
-
-margin-bottom:25px;
-
-font-weight:700;
-
-min-height:70px;
-
-}
-
-p{
-
-font-size:23px;
-
-color:white;
-
-opacity:.9;
-
-margin-bottom:45px;
-
-min-height:80px;
-
-}
-
-button{
-
-padding:18px 50px;
-
-border:none;
-
-border-radius:50px;
-
-cursor:pointer;
-
-font-size:20px;
-
-background:linear-gradient(45deg,#ff4d88,#ff8ab0);
-
-color:white;
-
-transition:.35s;
-
-}
-
-button:hover{
-
-transform:scale(1.08);
-
-}
 
 #particles{
 
-position:absolute;
+    position:fixed;
 
-width:100%;
+    inset:0;
 
-height:100%;
+    overflow:hidden;
 
-overflow:hidden;
+    z-index:0;
 
 }
+
 
 .star{
 
-position:absolute;
+    position:absolute;
 
-width:3px;
+    width:3px;
 
-height:3px;
+    height:3px;
 
-background:white;
+    background:white;
 
-border-radius:50%;
+    border-radius:50%;
 
-animation:twinkle 2s infinite alternate;
+    animation:twinkle 2s infinite alternate;
 
 }
+
+
+/* =========================
+        OCULTAR
+========================= */
+
+
+.oculto{
+
+    display:none !important;
+
+}
+
+
+.fadeIn{
+
+    animation:aparecer 1s forwards;
+
+}
+
+
+.fadeOut{
+
+    animation:desaparecer .8s forwards;
+
+}
+
+
+/* =========================
+        ANIMACIONES
+========================= */
+
 
 @keyframes entrada{
 
-from{
+    from{
 
-opacity:0;
-transform:scale(.8);
+        opacity:0;
 
-}
+        transform:scale(.8);
 
-to{
+    }
 
-opacity:1;
-transform:scale(1);
+    to{
 
-}
+        opacity:1;
 
-}
+        transform:scale(1);
 
-@keyframes twinkle{
-
-from{
-
-opacity:.2;
+    }
 
 }
 
-to{
-
-opacity:1;
-
-}
-
-}
-.oculto{
-    display:none;
-}
-
-.fadeOut{
-    animation:desaparecer .8s forwards;
-}
-
-.fadeIn{
-    display:block;
-    animation:aparecer 1s forwards;
-}
-
-.historia {
-    position: absolute;
-    width: 800px;
-    max-width: 90%;
-    text-align: center;
-    padding: 70px;
-    border-radius: 35px;
-    background: rgba(10, 8, 35, 0.92);   /* Más oscuro y opaco */
-    backdrop-filter: blur(8px);           /* Bajamos mucho el blur */
-    border: 1px solid rgba(255,255,255,0.18);
-    color: white;
-    z-index: 15;
-    box-shadow: 0 25px 70px rgba(0,0,0,0.7);
-}
 
 
+@keyframes aparecer{
 
-.historia h2{
+    from{
 
-    font-size:48px;
+        opacity:0;
 
-    margin-bottom:30px;
+        transform:translateY(40px) scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
 
 }
 
-.historia p{
 
-    font-size:22px;
-
-    line-height:1.8;
-
-}
 
 @keyframes desaparecer{
 
@@ -224,13 +157,13 @@ opacity:1;
 
 }
 
-@keyframes aparecer{
+
+
+@keyframes twinkle{
 
     from{
 
-        opacity:0;
-
-        transform:scale(1.1);
+        opacity:.2;
 
     }
 
@@ -238,162 +171,404 @@ opacity:1;
 
         opacity:1;
 
-        transform:scale(1);
-
     }
 
 }
-.timeline {
-    position: absolute;
-    width: 1000px;
-    max-width: 95%;
-    height: 85vh;
-    overflow-y: auto;
-    padding: 40px 50px;           /* Reduje un poco el padding */
-    border-radius: 35px;
-    background: rgba(10, 8, 35, 0.92);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.18);
-    color: white;
-    z-index: 15;
-    box-shadow: 0 25px 70px rgba(0,0,0,0.7);
+
+
+/* =========================
+      TARJETA PRINCIPAL
+========================= */
+
+
+.card{
+
+    position:relative;
+
+    z-index:2;
+
+    width:800px;
+
+    max-width:95%;
+
+
+    padding:70px;
+
+
+    text-align:center;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    backdrop-filter:blur(18px);
+
+
+    border-radius:35px;
+
+
+    box-shadow:
+
+    0 30px 80px rgba(0,0,0,.45);
+
+
+    animation:entrada 1.4s;
+
 }
 
-/* Mejoramos el contenedor interno */
-#timelineContainer {
-    position: relative;
-    width: 100%;
-    padding: 20px 0;
-    margin-top: 20px;
+
+
+h1{
+
+    font-size:55px;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+    min-height:70px;
+
 }
 
-/* Ajustamos los recuerdos para que no ocupen tanto espacio */
-.recuerdo {
-    position: relative;
-    width: 42%;
-    padding: 20px;
-    margin: 30px 0;               /* Reduje el margen */
-    border-radius: 20px;
-    background: rgba(255,255,255,.12);
-    backdrop-filter: blur(10px);
-    animation: aparecer 1s forwards;
-    opacity: 0;
-    transition: .3s;
+
+
+p{
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    opacity:.9;
+
 }
 
-.recuerdo:hover {
-    transform: scale(1.03);
+
+
+button{
+
+    margin-top:35px;
+
+    padding:18px 50px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    font-weight:600;
+
+
+    color:white;
+
+
+    background:
+
+    linear-gradient(
+        45deg,
+        #ff4d88,
+        #ff8ab0
+    );
+
+
+    transition:.35s;
+
 }
 
-/* Línea central */
-#timelineContainer::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
-    background: rgba(255,255,255,0.3);
+
+button:hover{
+
+    transform:scale(1.08);
+
 }
+
+/* =========================
+        HISTORIA
+========================= */
+
+
+.historia{
+
+    position:relative;
+
+    z-index:3;
+
+    width:800px;
+
+    max-width:95%;
+
+    padding:70px;
+
+    text-align:center;
+
+
+    background:
+
+    rgba(10,8,35,.92);
+
+
+    backdrop-filter:blur(10px);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.18);
+
+
+    border-radius:35px;
+
+
+    box-shadow:
+
+    0 25px 70px rgba(0,0,0,.7);
+
+
+    animation:aparecer 1s;
+
+}
+
+
+
+.historia h2{
+
+    font-size:48px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.historia p{
+
+    font-size:22px;
+
+    line-height:1.8;
+
+}
+
+
+
+/* =========================
+          TIMELINE
+========================= */
+
+
+.timeline{
+
+    position:relative;
+
+    z-index:3;
+
+
+    width:1000px;
+
+    max-width:95%;
+
+
+    height:85vh;
+
+    overflow-y:auto;
+
+
+    padding:40px 50px;
+
+
+    background:
+
+    rgba(10,8,35,.92);
+
+
+    backdrop-filter:blur(10px);
+
+
+    border-radius:35px;
+
+
+    border:
+
+    1px solid rgba(255,255,255,.18);
+
+
+    box-shadow:
+
+    0 25px 70px rgba(0,0,0,.7);
+
+
+}
+
+
 
 .timeline h2{
 
     text-align:center;
 
-    margin-bottom:50px;
-
     font-size:45px;
 
+    margin-bottom:40px;
+
 }
+
+
 
 #timelineContainer{
+
     position:relative;
+
     width:100%;
-    margin-top:40px;
+
+    padding:20px 0;
+
 }
+
+
 
 #timelineContainer::before{
+
     content:"";
+
     position:absolute;
+
+
     left:50%;
+
     top:0;
+
+
     transform:translateX(-50%);
+
+
     width:4px;
+
     height:100%;
-    background:white;
+
+
+    background:
+
+    rgba(255,255,255,.35);
 
 }
+
+
+
+/* tarjetas de recuerdos */
+
+
 .recuerdo{
 
     position:relative;
 
+
     width:42%;
+
 
     padding:20px;
 
+
     margin:40px 0;
+
 
     border-radius:20px;
 
-    background:rgba(255,255,255,.12);
+
+    background:
+
+    rgba(255,255,255,.12);
+
 
     backdrop-filter:blur(10px);
 
-    animation:aparecer 1s forwards;
 
     opacity:0;
+
+
+    animation:aparecer 1s forwards;
+
 
     transition:.3s;
 
 }
+
+
 
 .recuerdo:hover{
 
     transform:scale(1.03);
 
 }
+
+
+
 .recuerdo:nth-child(odd){
 
     left:0;
 
 }
 
+
+
 .recuerdo:nth-child(even){
 
     left:58%;
 
 }
+
+
+
 .recuerdo::before{
 
     content:"";
 
+
     position:absolute;
+
 
     top:30px;
 
+
     width:18px;
+
 
     height:18px;
 
+
     border-radius:50%;
 
+
     background:#ff7aa8;
+
 
     border:4px solid white;
 
 }
+
+
+
 .recuerdo:nth-child(odd)::before{
 
     right:-53px;
 
 }
 
+
+
 .recuerdo:nth-child(even)::before{
 
     left:-53px;
 
 }
+
+
+
 .recuerdo h3{
 
     color:#ffb5cf;
@@ -404,6 +579,8 @@ opacity:1;
 
 }
 
+
+
 .recuerdo h4{
 
     font-size:24px;
@@ -412,65 +589,93 @@ opacity:1;
 
 }
 
+
+
 .recuerdo p{
 
     font-size:18px;
 
     line-height:1.6;
 
-    margin:0;
-
 }
+
+
+
 .fotoRecuerdo{
 
     width:100%;
 
     height:220px;
 
+
     object-fit:cover;
+
 
     border-radius:18px;
 
+
     margin-bottom:20px;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+    box-shadow:
+
+    0 10px 30px rgba(0,0,0,.35);
+
 
     transition:.4s;
 
 }
+
+
+
 .fotoRecuerdo:hover{
 
     transform:scale(1.04);
 
 }
 
+
+
+/* =========================
+          VISOR
+========================= */
+
+
 #visor{
 
     position:fixed;
 
-    top:0;
-    left:0;
 
-    width:100%;
-    height:100%;
+    inset:0;
 
-    background:rgba(0,0,0,.9);
 
     display:flex;
 
+
     justify-content:center;
 
+
     align-items:center;
+
+
+    background:
+
+    rgba(0,0,0,.9);
+
 
     z-index:9999;
 
 }
 
+
+
 #visor.oculto{
 
-    display:none;
+    display:none !important;
 
 }
+
+
 
 .contenidoVisor{
 
@@ -478,40 +683,52 @@ opacity:1;
 
     max-width:90%;
 
+
     text-align:center;
 
     color:white;
 
 }
 
+
+
 #imagenGrande,
 #videoGrande{
 
     width:100%;
 
+
     max-height:70vh;
 
+
     object-fit:contain;
+
 
     border-radius:20px;
 
 }
 
+
+
 #cerrarVisor{
 
     position:absolute;
 
+
     top:25px;
+
 
     right:35px;
 
+
     font-size:45px;
 
-    color:white;
 
     cursor:pointer;
 
 }
+
+
 
 #visorTitulo{
 
@@ -519,21 +736,26 @@ opacity:1;
 
 }
 
+
+
 #visorTexto{
 
     margin-top:15px;
 
 }
+/* =========================
+      CAPÍTULO FINAL
+========================= */
 
 .capituloFinal{
 
-    position:absolute;
+    position:relative;
+    z-index:3;
 
     width:850px;
+    max-width:95%;
 
-    max-width:90%;
-
-    padding:70px;
+    padding:60px;
 
     text-align:center;
 
@@ -545,50 +767,50 @@ opacity:1;
 
     border:1px solid rgba(255,255,255,.15);
 
-    color:white;
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+
+    animation:aparecer 1s;
 
 }
 
 .capituloFinal h2{
 
-    font-size:45px;
-
-    margin-bottom:30px;
+    font-size:42px;
+    margin-bottom:25px;
 
 }
 
 .capituloFinal p{
 
-    font-size:22px;
-
-    line-height:1.8;
+    font-size:20px;
+    line-height:1.7;
+    margin-bottom:20px;
 
 }
 
 .capituloFinal h3{
 
-    margin-top:40px;
-
+    margin-top:35px;
     color:#ffb6d5;
-
-    font-size:30px;
+    font-size:28px;
 
 }
 
-.capituloFinal.oculto{
-    display: none;
-}
 
-/*==========================
-  SECCIÓN "SI PUDIERA VOLVER"
-==========================*/
+/* =========================
+        SI PUDIERA VOLVER
+========================= */
+
 
 .volver{
 
-    position:absolute;
+    position:relative;
+
+    z-index:3;
 
     width:100%;
-    height:100%;
+
+    min-height:100vh;
 
     display:flex;
 
@@ -600,56 +822,47 @@ opacity:1;
 
     text-align:center;
 
-    padding:80px;
-
-    color:white;
+    padding:40px;
 
     background:rgba(0,0,0,.55);
 
-    backdrop-filter:blur(6px);
+    backdrop-filter:blur(8px);
 
 }
+
+
 
 #volverTexto{
 
     max-width:900px;
 
-    font-size:38px;
+    font-size:36px;
 
     font-weight:300;
 
-    line-height:1.8;
+    line-height:1.7;
 
-    min-height:250px;
+    min-height:200px;
 
-    opacity:0;
-
-    animation:aparecerTexto 1s forwards;
+    animation:aparecerTexto 1s;
 
 }
+
+
 
 #seguirHistoria{
 
-    margin-top:60px;
-
-    opacity:0;
-
-    transition:.8s;
+    margin-top:40px;
 
 }
 
-#seguirHistoria.mostrar{
 
-    opacity:1;
-
-}
 
 @keyframes aparecerTexto{
 
     from{
 
         opacity:0;
-
         transform:translateY(30px);
 
     }
@@ -657,35 +870,326 @@ opacity:1;
     to{
 
         opacity:1;
-
         transform:translateY(0);
 
     }
 
 }
 
-.historia.oculto {
-    display: none !important;
+
+/* =========================
+          CONTADOR
+========================= */
+
+
+#contadorSeccion{
+
+    position:relative;
+
+    z-index:3;
+
+    text-align:center;
+
 }
 
-.fadeIn {
-    animation: aparecer 1s forwards;
-    opacity: 1;
+
+
+#contadorSeccion h1{
+
+    font-size:45px;
+
 }
 
-.fadeOut {
-    animation: desaparecer .8s forwards;
+
+
+.textoContador{
+
+    margin-bottom:25px;
+
 }
 
-/* ==================== CONTADOR ==================== */
-#contadorSeccion h1 {
-    font-size: 48px;
-    margin-bottom: 15px;
+
+
+#contador{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    margin:30px 0;
+
 }
 
-#contador {
-    font-size: 42px;
-    line-height: 1.4;
-    color: #ffb6d5;
-    text-shadow: 0 0 20px rgba(255, 182, 213, 0.6);
+
+
+.tiempo{
+
+    min-width:110px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+}
+
+
+
+.tiempo span{
+
+    display:block;
+
+    font-size:42px;
+
+    color:#ffb6d5;
+
+    text-shadow:0 0 20px rgba(255,182,213,.6);
+
+}
+
+
+
+.tiempo small{
+
+    font-size:15px;
+
+}
+
+
+/* =========================
+     LO QUE NUNCA TE DIJE
+========================= */
+
+
+.nuncaDije{
+
+    position:relative;
+
+    z-index:3;
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+    background:rgba(0,0,0,.65);
+
+    backdrop-filter:blur(8px);
+
+}
+
+
+
+.nuncaDije h2{
+
+    font-size:45px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.subtitulo{
+
+    max-width:700px;
+
+    font-size:19px;
+
+    opacity:.75;
+
+    margin-bottom:35px;
+
+}
+
+
+
+#polaroidContainer{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+}
+
+
+
+.polaroid{
+
+    width:320px;
+
+    background:white;
+
+    color:#222;
+
+    border-radius:10px;
+
+    padding:18px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.45);
+
+    animation:caerPolaroid .8s;
+
+}
+
+
+
+.polaroid h3{
+
+    font-size:25px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.polaroid p{
+
+    color:#444;
+
+    font-size:17px;
+
+    line-height:1.6;
+
+}
+
+
+
+@keyframes caerPolaroid{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-60px) rotate(-8deg);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) rotate(0);
+
+    }
+
+}
+
+
+
+/* =========================
+          CELULAR
+========================= */
+
+
+@media(max-width:700px){
+
+    body{
+
+        padding:15px;
+
+        overflow-x:hidden;
+
+    }
+
+
+    .card,
+    .historia,
+    .timeline,
+    .capituloFinal{
+
+        padding:30px 20px;
+
+    }
+
+
+    h1{
+
+        font-size:35px;
+
+    }
+
+
+    h2{
+
+        font-size:30px;
+
+    }
+
+
+    p{
+
+        font-size:17px;
+
+    }
+
+
+    .timeline{
+
+        height:90vh;
+
+    }
+
+
+    #timelineContainer::before{
+
+        left:15px;
+
+    }
+
+
+    .recuerdo{
+
+        width:90%;
+
+        left:40px !important;
+
+    }
+
+
+    .recuerdo::before{
+
+        left:-38px !important;
+
+        right:auto;
+
+    }
+
+
+    #volverTexto{
+
+        font-size:25px;
+
+    }
+    
+    .tiempo{
+
+        min-width:85px;
+
+    }
+
+
 }
