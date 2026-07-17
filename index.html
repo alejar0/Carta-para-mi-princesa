@@ -3,131 +3,203 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Alexandra 🤍</title>
 
-<title>Para Alexandra 🤍</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div id="particles"></div>
+    <!-- ================= PARTÍCULAS ================= -->
 
-<div class="card">
+    <div id="particles"></div>
 
-<h1 id="titulo"></h1>
+    <!-- ================= BIENVENIDA ================= -->
 
-<p id="texto"></p>
+    <div class="card">
 
-<button id="boton">
+        <h1 id="titulo"></h1>
 
-Comenzar 🤍
+        <p id="texto"></p>
 
-</button>
-
-</div>
-
-<div class="historia oculto">
-
-    <h2>Nuestra historia 🤍</h2>
-
-    <p id="historiaTexto"></p>
-
-    <button id="continuar">
-        Continuar →
-    </button>
-
-</div>
-
-<div class="timeline oculto">
-
-    <h2>Nuestra historia ✨</h2>
-
-    <div id="timelineContainer"></div>
-
-    <button id="continuarHistoria">
-        Continuar ❤️
-    </button>
-
-</div>
-
-<div class="volver oculto">
-
-    <div id="volverTexto"></div>
-
-    <button id="seguirHistoria" class="oculto">
-        Continuar 🤍
-    </button>
-
-</div>
-
-<div class="capituloFinal oculto">
-
-    <h2>✨ Fin del capítulo de hoy MAÑANA MAAAS ✨</h2>
-
-    <p>
-        Si llegaste hasta aquí...
-        gracias por tomarte el tiempo de leer. ❤️
-    </p>
-
-    <p>
-        Todo comenzó con un simple mensaje...
-        exactamente a las <b>10:52 p. m.</b>
-    </p>
-
-    <p>
-        Por eso esta página no termina hoy.
-    </p>
-
-    <p>
-        Recuerda venir mañana tambien a las <b>10:52 p. m.</b>,
-        encontrarás un nuevo recuerdo, una nueva carta o una nueva sorpresa para ti.
-        TE AAAAAAAAAAAAAAAMOOOOOOOOOOOOOOOOOO🎶🎶🎶🎸🎸🎸 YUREIMY ALEXANDRA BERMEO ARDILA
-    </p>
-
-    <h3>Nos vemos mañana... 🤍</h3>
-
-</div>
-
-<div id="visor" class="oculto">
-
-    <div class="contenidoVisor">
-
-        <span id="cerrarVisor">&times;</span>
-
-        <img id="imagenGrande" src="" alt="Recuerdo">
-
-        <video id="videoGrande" controls class="oculto"></video>
-
-        <h2 id="visorTitulo"></h2>
-
-        <p id="visorTexto"></p>
+        <button id="boton">
+            Comenzar 🤍
+        </button>
 
     </div>
 
-</div>
+    <!-- ================= NUESTRA HISTORIA ================= -->
 
-<script src="script.js"></script>
+    <div class="historia oculto">
 
-<!-- NUEVA SECCIÓN: CONTADOR DE TIEMPO -->
-<div id="contadorSeccion" class="card oculto">
-    <h1>Nuestro Tiempo Juntos 🤍</h1>
-    <p style="font-size: 26px; margin: 25px 0;">
-        Desde que nos hicimos novios<br>
-        <strong id="contador" style="font-size: 44px; color: #ffb6d5; display:block; margin-top:15px;"></strong>
+        <h2>Nuestra historia 🤍</h2>
+
+        <p id="historiaTexto"></p>
+
+        <button id="continuar">
+            Continuar →
+        </button>
+
+    </div>
+
+    <!-- ================= TIMELINE ================= -->
+
+    <div class="timeline oculto">
+
+        <h2>Nuestra historia ✨</h2>
+
+        <div id="timelineContainer"></div>
+
+        <button id="continuarHistoria">
+            Continuar ❤️
+        </button>
+
+    </div>
+
+    <!-- ================= SI PUDIERA VOLVER ================= -->
+
+    <div class="volver oculto">
+
+        <div id="volverTexto"></div>
+
+        <button id="seguirHistoria" class="oculto">
+            Continuar 🤍
+        </button>
+
+    </div>
+
+    <!-- ================= CAPÍTULO FINAL ================= -->
+
+    <div class="capituloFinal oculto">
+
+        <h2>✨ Fin del capítulo de hoy ✨</h2>
+
+        <p>
+            Si llegaste hasta aquí...
+            gracias por tomarte el tiempo de leer. ❤️
+        </p>
+
+        <p>
+            Todo comenzó con un simple mensaje...
+            exactamente a las <b>10:52 p. m.</b>
+        </p>
+
+        <p>
+            Por eso esta página no termina hoy.
+        </p>
+
+        <p>
+            Recuerda venir mañana también a las <b>10:52 p. m.</b>.
+            Encontrarás un nuevo recuerdo, una nueva carta o una nueva sorpresa para ti.
+        </p>
+
+        <h3>Nos vemos mañana... 🤍</h3>
+
+    </div>
+
+    <!-- ================= VISOR ================= -->
+
+    <div id="visor" class="oculto">
+
+        <div class="contenidoVisor">
+
+            <span id="cerrarVisor">&times;</span>
+
+            <img id="imagenGrande" src="" alt="Recuerdo">
+
+            <video id="videoGrande" controls class="oculto"></video>
+
+            <h2 id="visorTitulo"></h2>
+
+            <p id="visorTexto"></p>
+
+        </div>
+
+    </div>
+
+    <div id="contadorSeccion" class="card oculto">
+
+    <h1>Todo este tiempo... 🤍</h1>
+
+    <p class="textoContador">
+
+        Desde el 2 de febrero de 2026 a las 10:11 p. m.
+
     </p>
-    <button id="volverInicio">Volver al Principio</button>
+
+    <div id="contador">
+
+        <div class="tiempo">
+            <span id="dias">0</span>
+            <small>Días</small>
+        </div>
+
+        <div class="tiempo">
+            <span id="horas">0</span>
+            <small>Horas</small>
+        </div>
+
+        <div class="tiempo">
+            <span id="minutos">0</span>
+            <small>Minutos</small>
+        </div>
+
+        <div class="tiempo">
+            <span id="segundos">0</span>
+            <small>Segundos</small>
+        </div>
+
+    </div>
+
+    <p class="fraseContador">
+
+        Y cada uno de esos segundos ha valido la pena. 🤍
+
+    </p>
+
+    <button id="continuarNuncaDije">
+
+        Continuar ❤️
+
+    </button>
+
 </div>
+
+    <!-- ================= LO QUE NUNCA TE DIJE ================= -->
+
+    <div class="nuncaDije oculto">
+
+        <h2>Hay cosas que nunca supe decirte... 🤍</h2>
+
+        <p class="subtitulo">
+
+            Hay cosas que entendí demasiado tarde...
+            y otros que simplemente nunca encontré la forma correcta de decirte.
+
+        </p>
+
+        <div id="polaroidContainer"></div>
+
+        <button id="continuarCarta" class="oculto">
+
+            Continuar 🤍
+
+        </button>
+
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="script.js"></script>
 
 </body>
 
