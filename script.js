@@ -97,8 +97,9 @@ const contadorSeccion=document.getElementById("contadorSeccion");
 
 const nuncaDije=document.querySelector(".nuncaDije");
 
+const musica = document.getElementById("musica");
 
-
+const pantallaNegra = document.getElementById("pantallaNegra");
 
 // =========================
 // HISTORIA
@@ -117,12 +118,39 @@ Existe porque todo lo lindo que hemos construido merece ser recordado 🤍`;
 
 boton.addEventListener("click",()=>{
 
+    pantallaNegra.classList.add("mostrar");
 
-    card.classList.add("fadeOut");
+    setTimeout(()=>{
+
+        musica.currentTime = 38;
+        musica.volume = 0;
+        musica.play();
+
+        let volumen = 0;
+
+        const fade = setInterval(()=>{
+
+            volumen += 0.02;
+
+            if(volumen >= 0.45){
+
+                volumen = 0.45;
+                clearInterval(fade);
+
+            }
+
+            musica.volume = volumen;
+
+        },150);
+
+        card.classList.add("fadeOut");
+
+    },1000);
 
 
     setTimeout(()=>{
 
+        pantallaNegra.classList.remove("mostrar");
 
         card.classList.add("oculto");
 
@@ -130,16 +158,9 @@ boton.addEventListener("click",()=>{
 
         historia.classList.add("fadeIn");
 
+        escribir("historiaTexto",historiaTexto,25);
 
-        escribir(
-            "historiaTexto",
-            historiaTexto,
-            25
-        );
-
-
-    },700);
-
+    },1800);
 
 });
 
@@ -152,7 +173,19 @@ boton.addEventListener("click",()=>{
 
 document
 .getElementById("continuar")
-.addEventListener("click",()=>{
+.addEventListener("click",()=>{const bajar = setInterval(() => {
+
+    if (musica.volume > 0.18) {
+
+        musica.volume -= 0.01;
+
+    } else {
+
+        clearInterval(bajar);
+
+    }
+
+}, 120);
 
 
     historia.classList.add("fadeOut");
@@ -598,6 +631,20 @@ document
 
         actualizarContador();
 
+        const subir = setInterval(() => {
+
+    if (musica.volume < 0.45) {
+
+        musica.volume += 0.02;
+
+    } else {
+
+        clearInterval(subir);
+
+    }
+
+}, 120);
+
 
     },700);
 
@@ -902,10 +949,14 @@ document
 .getElementById("continuarCarta")
 .addEventListener("click",()=>{
 
+    // Desaparece toda la página suavemente
+    document.body.classList.add("fadeOut");
 
-alert(
-"Gracias por leer todo esto 🤍"
-);
+    // Espera 2 segundos
+    setTimeout(()=>{
 
+        window.location.href="capitulo2.html";
+
+    },2000);
 
 });
