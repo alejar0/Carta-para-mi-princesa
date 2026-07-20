@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Capítulo II</title>
+    <title>Mientras exista un camino...</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="mapa.css">
 
@@ -18,91 +18,84 @@
 
 <body>
 
-    <!-- ===============================
-         FONDO
-    ================================ -->
+    <!-- Fondo -->
 
     <div id="particles"></div>
 
-    <!-- ===============================
-         INTRO
-    ================================ -->
+    <!-- Mapa -->
 
-    <section id="intro">
+    <div id="escenaMapa">
 
-        <div class="texto">
+        <img
+            src="img/colombia.png"
+            id="mapaColombia"
+            alt="Mapa de Colombia">
 
-            <h1 id="typewriter"></h1>
+        <!-- Camino de luz -->
+
+        <svg id="caminoSVG">
+
+            <path id="camino"></path>
+
+        </svg>
+
+        <!-- Contenedor de partículas -->
+
+        <div id="travelContainer"></div>
+
+        <!-- Armenia -->
+
+        <div id="armenia" class="ciudad">
+
+            <div class="corazon">❤️</div>
+
+            <span>Armenia</span>
 
         </div>
+
+        <!-- Paipa -->
+
+        <div id="paipa" class="ciudad">
+
+            <div class="corazon">❤️</div>
+
+            <span>Paipa</span>
+
+        </div>
+
+    </div>
+
+    <!-- Texto -->
+
+    <section id="mensajes">
+
+        <h1 id="textoPrincipal"></h1>
 
     </section>
 
-    <!-- ===============================
-         ESCENA PRINCIPAL
-    ================================ -->
+    <!-- Mensaje Final -->
 
-    <section id="escena" class="hidden">
+    <section id="mensajeFinal">
 
-        <!-- Universo -->
+        <p>
 
-        <div id="universo">
+            No importa cuántos kilómetros haya entre nosotros...
 
-            <!-- Camino de estrellas -->
+            <br><br>
 
-            <svg id="constelacion">
+            Siempre encontraré el camino para llegar a ti.
 
-                <!-- JavaScript dibujará aquí todas las estrellas -->
-
-            </svg>
-
-            <!-- Armenia -->
-
-            <div id="armenia" class="ciudad">
-
-                <div class="heart"></div>
-
-                <span>Armenia</span>
-
-            </div>
-
-            <!-- Paipa -->
-
-            <div id="paipa" class="ciudad">
-
-                <div class="heart"></div>
-
-                <span>Paipa</span>
-
-            </div>
-
-            <!-- Partículas viajeras -->
-
-            <div id="travelContainer"></div>
-
-            <!-- Corazón gigante final -->
-
-            <div id="bigHeart"></div>
-
-        </div>
-
-        <!-- Texto final -->
-
-        <div id="finalText">
-
-            <p id="finalPhrase"></p>
-
-        </div>
-
-        <!-- Botón -->
-
-        <button id="continueBtn">
-
-            Continuar →
-
-        </button>
+        </p>
 
     </section>
+
+    <!-- Botón -->
+
+    <button id="continuar">
+
+        Continuar 🤍
+
+    </button>
 
     <script src="mapa.js"></script>
 
