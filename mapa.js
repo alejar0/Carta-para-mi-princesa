@@ -1,338 +1,331 @@
-/* =====================================================
-   CAPÍTULO II
-   Mientras exista un camino...
-===================================================== */
-
-// ===============================================
-// ELEMENTOS
-// ===============================================
+// =========================================
+// ESTRELLAS
+// =========================================
 
 const particles = document.getElementById("particles");
-const intro = document.getElementById("intro");
-const escena = document.getElementById("escena");
 
-const typewriter = document.getElementById("typewriter");
+for(let i=0;i<220;i++){
 
-const armenia = document.getElementById("armenia");
-const paipa = document.getElementById("paipa");
+    const estrella=document.createElement("div");
 
-const finalText = document.getElementById("finalText");
-const finalPhrase = document.getElementById("finalPhrase");
+    estrella.className="estrella";
 
-const continueBtn = document.getElementById("continueBtn");
+    const size=Math.random()*3+1;
 
-const svg = document.getElementById("constelacion");
+    estrella.style.width=size+"px";
+    estrella.style.height=size+"px";
 
-const travelContainer = document.getElementById("travelContainer");
+    estrella.style.left=Math.random()*100+"vw";
+    estrella.style.top=Math.random()*100+"vh";
 
+    estrella.style.animationDelay=Math.random()*5+"s";
 
-// ===============================================
-// FRASES
-// ===============================================
-
-const frases = [
-
-"A veces pensé que la distancia era demasiado grande...",
-
-"Pero cada llamada...",
-
-"Cada mensaje...",
-
-"Cada 'buenas noches'...",
-
-"Nos seguía acercando."
-
-];
-
-
-// ===============================================
-// FONDO DE ESTRELLAS
-// ===============================================
-
-function crearFondo(){
-
-    for(let i=0;i<220;i++){
-
-        const star=document.createElement("div");
-
-        star.className="star";
-
-        star.style.left=Math.random()*100+"vw";
-
-        star.style.top=Math.random()*100+"vh";
-
-        star.style.animationDelay=Math.random()*5+"s";
-
-        star.style.opacity=Math.random();
-
-        const s=Math.random()*3+1;
-
-        star.style.width=s+"px";
-        star.style.height=s+"px";
-
-        particles.appendChild(star);
-
-    }
+    particles.appendChild(estrella);
 
 }
 
-crearFondo();
+// =========================================
+// REFERENCIAS
+// =========================================
 
+const armenia=document.getElementById("armenia");
+const paipa=document.getElementById("paipa");
 
-// ===============================================
-// MAQUINA DE ESCRIBIR
-// ===============================================
+const texto=document.getElementById("textoPrincipal");
 
-let fraseActual=0;
+const travel=document.getElementById("travelContainer");
 
-function escribir(){
+const camino=document.getElementById("camino");
 
-    if(fraseActual>=frases.length){
+const mensajeFinal=document.getElementById("mensajeFinal");
 
-        terminarIntro();
+const boton=document.getElementById("continuar");
+
+// =========================================
+// FRASES
+// =========================================
+
+const frases=[
+
+"Hoy tú estás en Paipa...",
+
+"Y yo sigo aquí, en Armenia...",
+
+"Hay kilómetros entre nosotros...",
+
+"Pero jamás habrá distancia entre nuestros corazones."
+
+];
+
+let indice=0;
+
+function mostrarFrases(){
+
+    if(indice>=frases.length){
+
+        setTimeout(iniciarCamino,1000);
 
         return;
 
     }
 
-    typewriter.innerHTML="";
-
-    let letra=0;
-
-    const texto=frases[fraseActual];
-
-    const maquina=setInterval(()=>{
-
-        typewriter.innerHTML+=texto.charAt(letra);
-
-        letra++;
-
-        if(letra>=texto.length){
-
-            clearInterval(maquina);
-
-            setTimeout(()=>{
-
-                fraseActual++;
-
-                escribir();
-
-            },1800);
-
-        }
-
-    },40);
-
-}
-
-escribir();
-
-
-// ===============================================
-// TERMINA INTRO
-// ===============================================
-
-function terminarIntro(){
-
-    intro.classList.add("fadeOut");
+    texto.classList.remove("visible");
 
     setTimeout(()=>{
 
-        intro.style.display="none";
+        texto.textContent=frases[indice];
 
-        escena.classList.remove("hidden");
+        texto.classList.add("visible");
 
-        iniciarEscena();
+        indice++;
 
-    },2000);
+        setTimeout(mostrarFrases,2600);
 
-}
-
-// ===============================================
-// ESCENA PRINCIPAL
-// ===============================================
-
-function iniciarEscena(){
-
-    // Aparece Armenia
-
-    setTimeout(()=>{
-
-        armenia.classList.add("show");
-        armenia.querySelector(".heart").classList.add("beat");
-
-    },1000);
-
-
-    // Aparece Paipa
-
-    setTimeout(()=>{
-
-        paipa.classList.add("show");
-        paipa.querySelector(".heart").classList.add("beat");
-
-    },2800);
-
-
-    // Empieza a formarse el camino
-
-    setTimeout(()=>{
-
-        crearConstelacion();
-
-    },5000);
+    },600);
 
 }
 
+setTimeout(mostrarFrases,1000);
 
+// =========================================
+// DIBUJAR EL CAMINO
+// =========================================
 
-// ===============================================
-// CAMINO DE ESTRELLAS
-// ===============================================
+function iniciarCamino(){
 
-function crearConstelacion(){
+    const a=armenia.getBoundingClientRect();
 
-    svg.innerHTML = "";
+    const p=paipa.getBoundingClientRect();
 
-    // Posición REAL de Armenia
-    const universo = document.getElementById("universo");
+    const x1=a.left+a.width/2;
 
-const rectUniverso = universo.getBoundingClientRect();
+    const y1=a.top+a.height/2;
 
-const rectArmenia = armenia.querySelector(".heart").getBoundingClientRect();
-const rectPaipa = paipa.querySelector(".heart").getBoundingClientRect();
+    const x2=p.left+p.width/2;
 
-const x1 = rectArmenia.left - rectUniverso.left + rectArmenia.width/2;
-const y1 = rectArmenia.top - rectUniverso.top + rectArmenia.height/2;
+    const y2=p.top+p.height/2;
 
-const x2 = rectPaipa.left - rectUniverso.left + rectPaipa.width/2;
-const y2 = rectPaipa.top - rectUniverso.top + rectPaipa.height/2;
+    const cx=(x1+x2)/2-10;
+    
+    const cy=(y1+y2)/2-210;
 
-    const total = 120;
+    camino.setAttribute(
 
-    for(let i = 0; i < total; i++){
+        "d",
 
-        const t = i / (total - 1);
+        `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`
 
-        // Interpolación
-        let x = x1 + (x2 - x1) * t;
-        let y = y1 + (y2 - y1) * t;
+    );
 
-        // Curva elegante
-        y -= Math.sin(t * Math.PI) * 90;
-
-        // Pequeña dispersión para que no parezca una carretera
-        x += (Math.random() - .5) * 10;
-        y += (Math.random() - .5) * 10;
-
-        const estrella = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "circle"
-        );
-
-        estrella.setAttribute("cx", x);
-        estrella.setAttribute("cy", y);
-
-        estrella.setAttribute("r", Math.random() * 2.5 + 1);
-
-        estrella.setAttribute(
-            "fill",
-            Math.random() > .75 ? "#ff4f6f" : "white"
-        );
-
-        estrella.style.opacity = 0;
-
-        estrella.style.transition = ".6s";
-
-        svg.appendChild(estrella);
-
-        setTimeout(() => {
-
-            estrella.style.opacity = 1;
-
-        }, i * 35);
-
-    }
-
-    setTimeout(() => {
-
-        iniciarViajes();
-
-    }, 5000);
+    recorrerCamino(x1,y1,cx,cy,x2,y2);
 
 }
 
-// ===============================================
-// LUCES VIAJANDO
-// ===============================================
+// =========================================
+// RECORRIDO
+// =========================================
 
-function iniciarViajes(){
+function recorrerCamino(x1,y1,cx,cy,x2,y2){
 
-    for(let i=0;i<10;i++){
+    for(let i=0;i<=170;i++){
 
         setTimeout(()=>{
 
-            viajar();
+            crearParticula(
 
-        },i*1200);
+                x1,
+                y1,
+
+                cx,
+                cy,
+
+                x2,
+                y2,
+
+                i/170
+
+            );
+
+        },i*28);
 
     }
 
+    setTimeout(()=>{
+
+        mensajeFinal.classList.add("visible");
+
+    },5200);
+
+    setTimeout(()=>{
+
+        boton.classList.add("visible");
+
+    },6500);
+
 }
 
-// ===============================================
-// LUZ VIAJANDO
-// ===============================================
+// =========================================
+// PARTÍCULAS DE LUZ
+// =========================================
 
-function viajar(){
+function crearParticula(x1,y1,cx,cy,x2,y2,t){
 
-    const luz = document.createElement("div");
+    const punto=bezier(x1,y1,cx,cy,x2,y2,t);
 
-    luz.className = "travel";
+    const estrella=document.createElement("div");
 
-    travelContainer.appendChild(luz);
+    estrella.className="travel";
 
-    // Mismos puntos del camino
-    const x1 = 151;
-    const y1 = 549;
+    estrella.style.left=punto.x+"px";
 
-    const x2 = 749;
-    const y2 = 101;
+    estrella.style.top=punto.y+"px";
 
-    let t = 0;
+    travel.appendChild(estrella);
 
-    const animacion = setInterval(()=>{
+    estrella.animate(
 
-        t += 0.008;
+        [
 
-        if(t >= 1){
+            {
 
-            clearInterval(animacion);
+                transform:"translate(-50%,-50%) scale(.2)",
 
-            luz.remove();
+                opacity:0
 
-            // Hace latir el corazón de Paipa
-            const h = paipa.querySelector(".heart");
+            },
 
-            h.classList.remove("beat");
+            {
 
-            void h.offsetWidth;
+                transform:"translate(-50%,-50%) scale(1)",
 
-            h.classList.add("beat");
+                opacity:1,
 
-            return;
+                offset:.4
+
+            },
+
+            {
+
+                transform:"translate(-50%,-50%) scale(.3)",
+
+                opacity:0
+
+            }
+
+        ],
+
+        {
+
+            duration:1400,
+
+            easing:"ease-out"
 
         }
 
-        let x = x1 + (x2 - x1) * t;
-        let y = y1 + (y2 - y1) * t;
+    );
 
-        // Misma curva usada para la constelación
-        y -= Math.sin(t * Math.PI) * 90;
+    setTimeout(()=>{
 
-        luz.style.left = x + "px";
-        luz.style.top = y + "px";
+        estrella.remove();
 
-    },16);
+    },1400);
 
 }
+
+// =========================================
+// CURVA BÉZIER
+// =========================================
+
+function bezier(x1,y1,cx,cy,x2,y2,t){
+
+    const x=
+
+        (1-t)*(1-t)*x1+
+
+        2*(1-t)*t*cx+
+
+        t*t*x2;
+
+    const y=
+
+        (1-t)*(1-t)*y1+
+
+        2*(1-t)*t*cy+
+
+        t*t*y2;
+
+    return{
+
+        x:x,
+
+        y:y
+
+    };
+
+}
+
+// =========================================
+// BOTÓN
+// =========================================
+
+boton.addEventListener("click",()=>{
+
+    document.body.style.transition="opacity 1s ease";
+
+    document.body.style.opacity="0";
+
+    setTimeout(()=>{
+
+        window.location.href="capitulo3.html";
+
+    },1000);
+
+});
+
+// =========================================
+// EFECTO EXTRA
+// =========================================
+
+setInterval(()=>{
+
+    armenia.querySelector(".corazon").animate(
+
+        [
+
+            {transform:"scale(1)"},
+
+            {transform:"scale(1.18)"},
+
+            {transform:"scale(1)"}
+
+        ],
+
+        {
+
+            duration:1500
+
+        }
+
+    );
+
+    paipa.querySelector(".corazon").animate(
+
+        [
+
+            {transform:"scale(1)"},
+
+            {transform:"scale(1.18)"},
+
+            {transform:"scale(1)"}
+
+        ],
+
+        {
+
+            duration:1500
+
+        }
+
+    );
+
+},2200);
