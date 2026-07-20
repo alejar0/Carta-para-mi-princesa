@@ -1,6 +1,6 @@
-/* ===================================
+/* ===================================================
    RESET
-=================================== */
+=================================================== */
 
 *{
     margin:0;
@@ -8,26 +8,26 @@
     box-sizing:border-box;
 }
 
-html,
-
 body{
-
-    width:100%;
-    height:100%;
 
     overflow:hidden;
 
-    font-family:'Poppins',sans-serif;
-
     background:#040507;
+
+    font-family:'Poppins',sans-serif;
 
     color:white;
 
+    width:100vw;
+    height:100vh;
+
+    position:relative;
+
 }
 
-/* ===================================
-   PARTÍCULAS
-=================================== */
+/* ===================================================
+   ESTRELLAS
+=================================================== */
 
 #particles{
 
@@ -35,60 +35,51 @@ body{
 
     inset:0;
 
-    z-index:0;
-
     overflow:hidden;
+
+    z-index:0;
 
 }
 
-.star{
+.estrella{
 
     position:absolute;
-
-    width:2px;
-
-    height:2px;
 
     border-radius:50%;
 
     background:white;
 
-    opacity:.3;
+    opacity:.4;
 
-    animation:blink 5s infinite ease-in-out;
+    animation:parpadear 3s infinite alternate;
 
 }
 
-@keyframes blink{
+@keyframes parpadear{
 
-    0%{
+    from{
 
-        opacity:.15;
-        transform:scale(.8);
+        opacity:.2;
+
+        transform:scale(.7);
 
     }
 
-    50%{
+    to{
 
         opacity:1;
-        transform:scale(1.4);
 
-    }
-
-    100%{
-
-        opacity:.15;
-        transform:scale(.8);
+        transform:scale(1);
 
     }
 
 }
 
-/* ===================================
-   INTRO
-=================================== */
+/* ===================================================
+   MAPA
+=================================================== */
 
-#intro{
+#escenaMapa{
 
     position:absolute;
 
@@ -100,73 +91,42 @@ body{
 
     align-items:center;
 
-    text-align:center;
-
-    padding:50px;
-
-    z-index:20;
-
 }
 
-#typewriter{
-
-    max-width:900px;
-
-    font-weight:300;
-
-    font-size:2rem;
-
-    line-height:1.8;
-
-}
-
-.hidden{
-
-    display:none;
-
-}
-
-/* ===================================
-   ESCENA
-=================================== */
-
-#escena{
+#mapaColombia{
 
     position:absolute;
 
-    inset:0;
+    width:400px;
 
-    display:flex;
+    left:50%;
 
-    flex-direction:column;
+    top:55%;
 
-    justify-content:center;
+    transform:translate(-50%,-50%);
 
-    align-items:center;
+    opacity:.08;
 
-}
+    pointer-events:none;
 
-#universo{
+    user-select:none;
 
-    position:relative;
-
-    width:900px;
-
-    height:650px;
+    z-index:1;
 
 }
 
-/* ===================================
-   CONSTELACIÓN
-=================================== */
+/* ===================================================
+   SVG
+=================================================== */
 
-#constelacion{
+#caminoSVG{
 
     position:absolute;
 
     inset:0;
 
     width:100%;
+
     height:100%;
 
     overflow:visible;
@@ -175,174 +135,21 @@ body{
 
 }
 
-/* ===================================
-   CIUDADES
-=================================== */
+#camino{
 
-.ciudad{
+    fill:none;
 
-    position:absolute;
+    stroke:rgba(255,255,255,.22);
 
-    display:flex;
+    stroke-width:2;
 
-    flex-direction:column;
-
-    align-items:center;
-
-    opacity:0;
-
-    transform:scale(.4);
-
-    transition:1.5s ease;
-
-    z-index:10;
+    stroke-linecap:round;
 
 }
 
-.ciudad.show{
-
-    opacity:1;
-
-    transform:scale(1);
-
-}
-
-#armenia{
-
-    left:140px;
-
-    bottom:90px;
-
-}
-
-#paipa{
-
-    right:140px;
-
-    top:90px;
-
-}
-
-.ciudad span{
-
-    margin-top:18px;
-
-    font-size:15px;
-
-    font-weight:300;
-
-    letter-spacing:2px;
-
-    opacity:.85;
-
-}
-
-/* ===================================
-   CORAZONES
-=================================== */
-
-.heart{
-
-    width:22px;
-
-    height:22px;
-
-    background:#ff4f6f;
-
-    position:relative;
-
-    transform:rotate(-45deg);
-
-    box-shadow:
-
-        0 0 18px rgba(255,79,111,.9),
-
-        0 0 40px rgba(255,79,111,.35);
-
-}
-
-.heart::before,
-.heart::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:22px;
-
-    height:22px;
-
-    background:#ff4f6f;
-
-    border-radius:50%;
-
-}
-
-.heart::before{
-
-    top:-11px;
-
-    left:0;
-
-}
-
-.heart::after{
-
-    left:11px;
-
-    top:0;
-
-}
-
-.heart.beat{
-
-    animation:heartbeat 2s infinite;
-
-}
-
-@keyframes heartbeat{
-
-    0%{
-
-        transform:rotate(-45deg) scale(1);
-
-    }
-
-    10%{
-
-        transform:rotate(-45deg) scale(1.25);
-
-    }
-
-    20%{
-
-        transform:rotate(-45deg) scale(1);
-
-    }
-
-    30%{
-
-        transform:rotate(-45deg) scale(1.15);
-
-    }
-
-    40%{
-
-        transform:rotate(-45deg) scale(1);
-
-    }
-
-    100%{
-
-        transform:rotate(-45deg) scale(1);
-
-    }
-
-}
-
-/* ===================================
-   PARTÍCULAS VIAJERAS
-=================================== */
+/* ===================================================
+   PARTÍCULAS DEL CAMINO
+=================================================== */
 
 #travelContainer{
 
@@ -358,251 +165,245 @@ body{
 
     position:absolute;
 
-    width:10px;
+    width:7px;
 
-    height:10px;
+    height:7px;
 
     border-radius:50%;
 
     background:white;
 
-    transform:translate(-50%,-50%);
-
     box-shadow:
-        0 0 10px white,
-        0 0 25px white,
-        0 0 45px rgba(255,255,255,.8);
 
-    z-index:50;
+        0 0 8px white,
+
+        0 0 20px white;
 
 }
 
-/* ===================================
-   CORAZÓN FINAL
-=================================== */
+/* ===================================================
+   CIUDADES
+=================================================== */
 
-#bigHeart{
+.ciudad{
 
     position:absolute;
 
-    left:50%;
-    top:50%;
+    display:flex;
 
-    width:320px;
-    height:320px;
+    flex-direction:column;
 
-    transform:translate(-50%,-50%);
+    align-items:center;
 
-    pointer-events:none;
+    gap:10px;
 
-    opacity:0;
-
-    transition:2s;
+    z-index:5;
 
 }
 
-#bigHeart.show{
+.corazon{
 
-    opacity:1;
+    font-size:30px;
 
-}
+    animation:latir 1.5s infinite;
 
-.bigParticle{
-
-    position:absolute;
-
-    width:4px;
-
-    height:4px;
-
-    border-radius:50%;
-
-    background:#ff4f6f;
-
-    box-shadow:
-        0 0 10px rgba(255,79,111,.8),
-        0 0 25px rgba(255,79,111,.4);
+    filter:drop-shadow(0 0 12px #ff4f6f);
 
 }
 
-/* ===================================
-   TEXTO FINAL
-=================================== */
+.ciudad span{
 
-#finalText{
+    font-size:14px;
 
-    margin-top:60px;
-
-    text-align:center;
-
-    opacity:0;
-
-    transition:2s;
-
-}
-
-#finalText.show{
-
-    opacity:1;
-
-}
-
-#finalPhrase{
-
-    max-width:850px;
-
-    font-size:1.6rem;
-
-    font-weight:300;
-
-    line-height:1.8;
-
-    letter-spacing:.8px;
-
-}
-
-/* ===================================
-   BOTÓN
-=================================== */
-
-#continueBtn{
-
-    margin-top:45px;
-
-    padding:16px 42px;
-
-    border-radius:999px;
-
-    border:1px solid rgba(255,255,255,.18);
-
-    background:rgba(255,255,255,.05);
+    letter-spacing:2px;
 
     color:white;
 
-    font-size:15px;
-
-    font-family:'Poppins',sans-serif;
-
-    cursor:pointer;
-
-    opacity:0;
-
-    transform:translateY(25px);
-
-    transition:.45s;
-
-    backdrop-filter:blur(14px);
-
 }
 
-#continueBtn.show{
-
-    opacity:1;
-
-    transform:translateY(0);
-
-}
-
-#continueBtn:hover{
-
-    color:#ff4f6f;
-
-    border-color:#ff4f6f;
-
-    box-shadow:
-        0 0 20px rgba(255,79,111,.35);
-
-}
-
-/* ===================================
-   DESVANECER
-=================================== */
-
-.fadeOut{
-
-    animation:fadeOut 2s forwards;
-
-}
-
-@keyframes fadeOut{
-
-    to{
-
-        opacity:0;
-
-    }
-
-}
-
-.fadeIn{
-
-    animation:fadeIn 2s forwards;
-
-}
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity:0;
-
-    }
-
-    to{
-
-        opacity:1;
-
-    }
-
-}
-
-/* ===================================
-   RESPONSIVE
-=================================== */
-
-@media(max-width:900px){
-
-    #universo{
-
-        width:100vw;
-        height:75vh;
-
-    }
+/* Armenia */
 
 #armenia{
 
-    left:140px;
-    bottom:70px;
+    position:absolute;
+
+    left:33%;
+
+    top:70%;
 
 }
 
 #paipa{
 
-    right:140px;
-    top:70px;
+    position:absolute;
+
+    left:73%;
+
+    top:31%;
 
 }
 
-    #typewriter{
+/* ===================================================
+   MENSAJES
+=================================================== */
 
-        font-size:1.4rem;
+#mensajes{
 
-        padding:0 20px;
+    position:absolute;
+
+    top:8%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:90%;
+
+    display:flex;
+
+    justify-content:center;
+
+    z-index:20;
+
+}
+
+#textoPrincipal{
+
+    font-weight:300;
+
+    font-size:2rem;
+
+    max-width:900px;
+
+    text-align:center;
+
+    line-height:1.7;
+
+    opacity:0;
+
+    transition:1s;
+
+}
+
+#textoPrincipal.visible{
+
+    opacity:1;
+
+}
+
+/* ===================================================
+   MENSAJE FINAL
+=================================================== */
+
+#mensajeFinal{
+
+    position:absolute;
+
+    bottom:150px;
+
+    width:100%;
+
+    text-align:center;
+
+    opacity:0;
+
+    transition:1.2s;
+
+    z-index:20;
+
+}
+
+#mensajeFinal.visible{
+
+    opacity:1;
+
+}
+
+#mensajeFinal p{
+
+    font-size:1.3rem;
+
+    line-height:1.8;
+
+    color:rgba(255,255,255,.92);
+
+}
+
+/* ===================================================
+   BOTÓN
+=================================================== */
+
+#continuar{
+
+    position:absolute;
+
+    bottom:60px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:16px 40px;
+
+    background:transparent;
+
+    border:1px solid rgba(255,255,255,.35);
+
+    border-radius:40px;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    transition:.4s;
+
+    z-index:30;
+
+}
+
+#continuar:hover{
+
+    border-color:#ff4f6f;
+
+    color:#ff4f6f;
+
+    box-shadow:
+
+        0 0 20px rgba(255,79,111,.35);
+
+}
+
+#continuar.visible{
+
+    opacity:1;
+
+}
+
+/* ===================================================
+   ANIMACIONES
+=================================================== */
+
+@keyframes latir{
+
+    0%{
+
+        transform:scale(1);
 
     }
 
-    #finalPhrase{
+    50%{
 
-        font-size:1.2rem;
-
-        padding:0 25px;
+        transform:scale(1.22);
 
     }
 
-    #bigHeart{
+    100%{
 
-        width:220px;
-        height:220px;
+        transform:scale(1);
 
     }
 
