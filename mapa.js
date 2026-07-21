@@ -110,14 +110,17 @@ function iniciarCamino(){
     const cy=(y1+y2)/2-210;
 
     camino.setAttribute(
+    "d",
+    `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`
+);
 
-        "d",
+// Color morado
+camino.style.stroke = "#c084fc";
+camino.style.strokeWidth = "3";
+camino.style.opacity = "0.35";
+camino.style.filter = "drop-shadow(0 0 10px #c084fc)";
 
-        `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`
-
-    );
-
-    recorrerCamino(x1,y1,cx,cy,x2,y2);
+recorrerCamino(x1,y1,cx,cy,x2,y2);
 
 }
 
@@ -127,26 +130,42 @@ function iniciarCamino(){
 
 function recorrerCamino(x1,y1,cx,cy,x2,y2){
 
-    for(let i=0;i<=170;i++){
+    const total = 140;
+
+    for(let i=0;i<=total;i++){
 
         setTimeout(()=>{
 
-            crearParticula(
+            const t = i/total;
 
-                x1,
-                y1,
+            const punto = bezier(x1,y1,cx,cy,x2,y2,t);
 
-                cx,
-                cy,
+            const estrella = document.createElement("div");
 
-                x2,
-                y2,
+            estrella.className = "travel";
 
-                i/170
+            // Algunos punticos serán rosados
+            if(Math.random()<0.18){
 
-            );
+                estrella.style.background="#ff7bd5";
 
-        },i*28);
+                estrella.style.boxShadow=
+                "0 0 8px #ff7bd5, 0 0 18px #ff7bd5";
+
+            }
+
+            // Tamaños diferentes
+            const size = 4 + Math.random()*5;
+
+            estrella.style.width=size+"px";
+            estrella.style.height=size+"px";
+
+            estrella.style.left=punto.x+"px";
+            estrella.style.top=punto.y+"px";
+
+            travel.appendChild(estrella);
+
+        },i*25);
 
     }
 
@@ -154,13 +173,13 @@ function recorrerCamino(x1,y1,cx,cy,x2,y2){
 
         mensajeFinal.classList.add("visible");
 
-    },5200);
+    },4000);
 
     setTimeout(()=>{
 
         boton.classList.add("visible");
 
-    },6500);
+    },5200);
 
 }
 
