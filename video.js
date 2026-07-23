@@ -1,26 +1,24 @@
 const video = document.getElementById("video");
 const finalVideo = document.getElementById("finalVideo");
 const boton = document.getElementById("continuar");
-const pantallaFinal = document.getElementById("pantallaFinal");
 
-video.addEventListener("ended",()=>{
+// Cuando termina el video
+video.addEventListener("ended", () => {
 
     finalVideo.classList.add("visible");
 
 });
 
-boton.addEventListener("click",()=>{
+// Cuando pulsa Continuar
+boton.addEventListener("click", () => {
 
-    document.getElementById("contenedorVideo").style.opacity="0";
-    finalVideo.style.opacity="0";
+    document.body.style.transition = "opacity .8s ease";
+    document.body.style.opacity = "0";
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
-        document.getElementById("contenedorVideo").style.display="none";
-        finalVideo.style.display="none";
+        window.location.href = "capitulo4.html";
 
-        pantallaFinal.classList.add("visible");
-
-    },800);
+    }, 800);
 
 });
