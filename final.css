@@ -1,0 +1,8 @@
+body{margin:0;background:#050505;color:#fff;font-family:Georgia,serif;overflow:hidden}
+#stars{position:fixed;inset:0} .star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:b 3s infinite}
+@keyframes b{50%{opacity:.2;transform:scale(1.8)}}
+#escena{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:30px;text-align:center}
+#texto{max-width:900px;font-size:2rem;white-space:pre-line;min-height:220px}
+#cursor{animation:c .8s infinite}@keyframes c{50%{opacity:0}}
+#pantallaFinal{position:fixed;inset:0;background:#050505;display:none;justify-content:center;align-items:center;flex-direction:column}
+#corazon{font-size:90px;animation:l 1.4s infinite}@keyframes l{50%{transform:scale(1.15)}}
